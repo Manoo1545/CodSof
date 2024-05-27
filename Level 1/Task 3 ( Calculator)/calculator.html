@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Calculator</title>
+    
+  </head>
+
+  <body>
+    <div class="calculator">
+      <div class="display" id="display">0</div>
+      <div class="buttons">
+        <button class="btn" id="clear">C</button>
+        <button class="btn">/</button>
+        <button class="btn">*</button>
+        <button class="btn">-</button>
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+        <button class="btn">+</button>
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn" id="equals">=</button>
+        <button class="btn">0</button>
+        <button class="btn">.</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const display = document.getElementById("display");
+        const buttons = Array.from(document.getElementsByClassName("btn"));
+        let currentInput = "";
+        let operator = "";
+        let operand1 = null;
+        let operand2 = null;
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const value = button.textContent;
+
+            if (value === "C") {
+              currentInput = "";
+              operator = "";
+              operand1 = null;
+              operand2 = null;
+              display.textContent = "0";
+              return;
+            }
+
+            if (value === "=") {
+              operand2 = parseFloat(currentInput);
+              if (operand1 !== null && operand2 !== null && operator) {
+                currentInput = evaluate(
+                  operand1,
+                  operand2,
+                  operator
+                ).toString();
+                display.textContent = currentInput;
+                operand1 = null;
+                operand2 = null;
+                operator = "";
+              }
+              return;
+            }
+
+            if (["+", "-", "*", "/"].includes(value)) {
+              if (currentInput) {
+                operand1 = parseFloat(currentInput);
+                operator = value;
+                currentInput = "";
+                display.textContent = `${operand1} ${operator}`;
+              }
+              return;
+            }
+
+            currentInput += value;
+            if (operator) {
+              display.textContent = `${operand1} ${operator} ${currentInput}`;
+            } else {
+              display.textContent = currentInput;
+            }
+          });
+        });
+
+        function evaluate(operand1, operand2, operator) {
+          switch (operator) {
+            case "+":
+              return operand1 + operand2;
+            case "-":
+              return operand1 - operand2;
+            case "*":
+              return operand1 * operand2;
+            case "/":
+              return operand1 / operand2;
+            default:
+              return operand2;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
