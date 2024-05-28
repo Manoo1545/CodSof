@@ -1,65 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMh92IOo3ro53i5Z08k6eD9KgTl2PU7xIVt+t9H"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: rgba(76, 175, 80, 0.9);
+        color: white;
+        padding: 1em 0;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2em;
+      }
+
+      header nav ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 1em 0 0 0;
+      }
+
+      header nav ul li {
+        margin: 0 15px;
+      }
+
+      header nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 10px;
+        transition: background-color 0.3s;
+      }
+
+      header nav ul li a:hover {
+        background-color: #45a049;
+        border-radius: 5px;
+      }
+
+      #hero {
+        background: url('How-Many-Web-Developers-in-the-World-1.avif') no-repeat
+          center center/cover;
+        color: white;
+        text-align: center;
+        padding: 150px 20px;
+        position: relative;
+      }
+
+      #hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      #hero h2,
+      #hero p,
+      #hero button {
+        position: relative;
+        z-index: 2;
+      }
+
+      #hero h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      #hero p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      #hero button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      #hero button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      section {
+        padding: 60px 20px;
+        margin-top: 70px;
+      }
+
+      #about {
+        text-align: center;
+        background-color: #f1f1f1;
+        padding: 60px 20px;
+      }
+
+      #about h2 {
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      #about p {
+        max-width: 800px;
+        margin: 0 auto 20px auto;
+        font-size: 1.1em;
+      }
+
+      #services {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        background-color: #fff;
+      }
+
+      #services .service {
+        flex: 1;
+        padding: 20px;
+        margin: 20px;
+        max-width: 300px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      #services .service:hover {
+        transform: scale(1.05);
+      }
+
+      #services h3 {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+      }
+
+      footer {
+        background-color: #4caf50;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 600px) {
+        header nav ul {
+          flex-direction: column;
+        }
+
+        header nav ul li {
+          margin: 5px 0;
+        }
+
+        #services {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>Welcome to My Landing Page</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <h1>Welcome to My Landing Page</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section id="hero">
-        <h2>Your Journey Starts Here</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <button>Learn More</button>
+      <h2>Your Journey Starts Here</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <button>Learn More</button>
     </section>
 
     <section id="about">
-        <h2>About Us</h2>
-        <p>We're a team of passionate web developers dedicated to crafting exceptional digital experiences. We believe in quality, creativity, and collaboration. Our mission is to help businesses like yours succeed online.
+      <h2>About Us</h2>
+      <p>
+        We're a team of passionate web developers dedicated to crafting
+        exceptional digital experiences. We believe in quality, creativity, and
+        collaboration. Our mission is to help businesses like yours succeed
+        online.
+      </p>
 
-            <h2>Our Values</h2>
-            <p>
-            - Quality
-            - Creativity
-            - Collaboration
-            - Integrity
-            </p>
+      <h2>Our Values</h2>
+      <p>- Quality - Creativity - Collaboration - Integrity</p>
 
-            <h2>Get in Touch</h2>
-            
-            <p>Ready to elevate your online presence? Contact us today!</p>
-        
+      <h2>Get in Touch</h2>
+      <p>Ready to elevate your online presence? Contact us today!</p>
     </section>
 
     <section id="services">
-        <h2>Our Services</h2>
-        <div class="service">
-            <h3>Web Development</h3>
-            <p>Creating stunning websites.</p>
-        </div>
-        <div class="service">
-            <h3>App Development</h3>
-            <p>Building user-friendly apps.</p>
-        </div>
-        <div class="service">
-            <h3>SEO Optimization</h3>
-            <p>Improving your online presence.</p>
-        </div>
+      <h2>Our Services</h2>
+      <div class="service">
+        <h3>Web Development</h3>
+        <p>Creating stunning websites.</p>
+      </div>
+      <div class="service">
+        <h3>App Development</h3>
+        <p>Building user-friendly apps.</p>
+      </div>
+      <div class="service">
+        <h3>SEO Optimization</h3>
+        <p>Improving your online presence.</p>
+      </div>
     </section>
 
     <footer>
-        <p>Contact us: rimshammahfooz.com</p>
+      <p>Contact us: rimshammahfooz@gmail.com</p>
     </footer>
-</body>
+  </body>
 </html>
